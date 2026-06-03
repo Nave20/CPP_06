@@ -11,16 +11,11 @@
 /* ************************************************************************** */
 
 #pragma once
-#include <string>
+#include "Base.hpp"
 
-class ScalarConverter
+class C : public Base
 {
 	public:
-		static void convert(const std::string& literal);
 
 	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& other);
-		ScalarConverter&	operator=(const ScalarConverter& other);
-		~ScalarConverter();
 };

@@ -3,3 +3,5 @@ cmake-build-debug
 Bureaucracy
 objs
 convert
+serialize
+identify

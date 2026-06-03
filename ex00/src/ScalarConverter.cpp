@@ -36,7 +36,7 @@ void ScalarConverter::convert(const std::string &literal)
 		if (!std::isdigit(literal[j]) && valid == false)
 		{
 			if ((literal[j] == '.' && !std::isdigit(literal[j + 1]))
-				|| (literal[j] == 'f' && literal[j + 1] != 0))
+				|| (literal[j] == 'f' && literal[j + 1] != 0) || (literal[j] == '-' && j != 0))
 			{
 				std::cout << literal << " can't be converted" << std::endl;
 				return;
@@ -44,7 +44,7 @@ void ScalarConverter::convert(const std::string &literal)
 		}
 	for (size_t j = 0; j < literal.length(); j++)
 		if (!std::isdigit(literal[j]) && valid == false && literal[j] != '.'
-			&& literal[j] != 'f' && literal[j] != '-')
+			&& literal[j] != 'f' && literal[j] != '-' && literal.length() != 1)
 		{
 			std::cout << literal << " can't be converted" << std::endl;
 			return;
