@@ -24,9 +24,14 @@ void ScalarConverter::convert(const std::string &literal)
 {
 	double	value;
 	bool	valid = false;
-	std::string tab[] = {"nan", "nanf", "inf", "inff", "-inf", "-inff"};
+	if (literal.empty())
+	{
+		std::cout << "Empty argument." << std::endl;
+		return;
+	}
+	std::string tab[] = {"nan", "nanf", "inf", "+inf", "+inff", "inff", "-inf", "-inff"};
 
-	for (size_t j = 0; j < tab->size(); j++)
+	for (size_t j = 0; j < 8; j++)
 		if (tab[j] == literal)
 		{
 			valid = true;
@@ -42,6 +47,15 @@ void ScalarConverter::convert(const std::string &literal)
 				return;
 			}
 		}
+	int i = 0;
+	for (size_t j = 0; j < literal.length(); j++)
+		if (literal[j] == '.')
+			i++;
+	if (i > 1)
+	{
+		std::cout << literal << " can't be converted" << std::endl;
+		return;
+	}
 	for (size_t j = 0; j < literal.length(); j++)
 		if (!std::isdigit(literal[j]) && valid == false && literal[j] != '.'
 			&& literal[j] != 'f' && literal[j] != '-' && literal.length() != 1)
@@ -58,7 +72,7 @@ void ScalarConverter::convert(const std::string &literal)
 	if (value < 0 || value > 127)
 		std::cout << "char : imposible" << std::endl;
 	else if (!std::isprint(static_cast<char>(value)))
-		std::cout << "char : not printable" << std::endl;
+		std::cout << "char : not displayable" << std::endl;
 	else
 		std::cout << "char : '" << static_cast<char>(value) << "'" << std::endl;
 
