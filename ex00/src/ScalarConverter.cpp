@@ -70,7 +70,7 @@ void ScalarConverter::convert(const std::string &literal)
 		value = std::strtod(literal.c_str(), NULL);
 
 	if (value < 0 || value > 127)
-		std::cout << "char : imposible" << std::endl;
+		std::cout << "char : impossible" << std::endl;
 	else if (!std::isprint(static_cast<char>(value)))
 		std::cout << "char : not displayable" << std::endl;
 	else
@@ -83,8 +83,8 @@ void ScalarConverter::convert(const std::string &literal)
 	else
 		std::cout << "int : " << static_cast<int>(value) << std::endl;
 
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float : "
+	std::cout << std::fixed << std::setprecision(1)
+			  << "float : "
 			  << static_cast<float>(value)
 			  << "f"
 			  << std::endl;
